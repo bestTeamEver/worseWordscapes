@@ -1,0 +1,31 @@
+.dot {
+  background: grey;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+}
+
+body {
+  background-color: lightblue;
+}
+
+#main {
+  margin-top: 20px;
+}
+
+.character-icon {
+  background: hotpink;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#interaction-area {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+  width: 90%;
+}
