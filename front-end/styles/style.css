@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap");
+
+.dot {
+  background: grey;
+  border-radius: 50%;
+  width: 100%;
+  height: 60vh;
+  margin-bottom: 10px;
+}
+
+body {
+  background-color: lightblue;
+}
+
+#main {
+  margin-top: 20px;
+}
+
+.character-icon {
+  background: hotpink;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.inner-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
