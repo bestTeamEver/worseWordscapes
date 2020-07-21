@@ -4,16 +4,13 @@ const app = express();
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
+
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT !== undefined ? process.env.PORT : 3000;
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
-});
-
-app.get("/", (req, res) => {
-  res.send("Get words home");
 });
 
 /// start a session with a set of characters and preload possible words
