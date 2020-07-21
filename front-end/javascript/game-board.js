@@ -42,7 +42,7 @@ function placeCharacterCircles() {
   let offset =
     document.getElementsByClassName("character-icon")[0].clientWidth / 10;
 
-  let angle = 360 / list.childElementCount + 90; // shift around to start at top of circle
+  let angle = 360 / list.childElementCount; // shift around to start at top of circle
 
   // add css for each child in list (e.g. the character circles)
   list.childNodes.forEach((item, index) => {

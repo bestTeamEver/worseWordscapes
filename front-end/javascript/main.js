@@ -1,8 +1,44 @@
 // grab the current leaderboard and display it in #leaderboard
 document.getElementById("leaderboard").appendChild(getLeaderBoard());
 
-const characters = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const letterFrequencies = {
+  E: 0.1202,
+  T: 0.091,
+  A: 0.0812,
+  O: 0.0768,
+  I: 0.0731,
+  N: 0.0695,
+  S: 0.0628,
+  R: 0.0602,
+  H: 0.0592,
+  D: 0.0432,
+  L: 0.0398,
+  U: 0.0288,
+  C: 0.0271,
+  M: 0.0261,
+  F: 0.023,
+  Y: 0.0211,
+  W: 0.0209,
+  G: 0.0203,
+  P: 0.0182,
+  B: 0.0149,
+  V: 0.0111,
+  K: 0.0069,
+  X: 0.0017,
+  Q: 0.0011,
+  J: 0.001,
+  Z: 0.0007,
+};
+
+// round stuff { ---------------------------------------------------------
+let characters = getRoundCharacters(6);
+let words;
+let usedWords = [];
+getWords(characters);
+
 insertCharacters(characters);
+
+// }                -----------------------------------------------------
 
 function getLeaderBoard() {
   // pull from a database somewhere.
@@ -46,10 +82,42 @@ function createLeaderboardElement(entries) {
 }
 
 // get the characters for this round
+function getRoundCharacters(numCharacters) {
+  const characters = [];
 
-// load all the possible words into a data structure.
+  for (let i = 0; i < numCharacters; i++) {
+    characters.push(getValueFromLetterFreqs(Math.random()));
+  }
 
-// chose how many characters to use this round
+  return characters;
+}
+
+function getValueFromLetterFreqs(num) {
+  let returning;
+  let sum = 0;
+  for (item in letterFrequencies) {
+    sum += letterFrequencies[item];
+    if (num < sum) {
+      return item;
+    }
+  }
+  return "Z"; // default return if doesn't work
+}
+
+// load all the possible words into a data structure. Take in an array of characters
+function getWords(characters) {
+  let query = characters.join("");
+
+  const response = fetch(
+    `https://word-scapes.herokuapp.com/start?letters=${query}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      words = data.filter((item) => item.length > 2);
+    });
+}
+
+// choose how many characters to use this round
 
 // update the current score
 function updateScore(increment) {
@@ -59,9 +127,17 @@ function updateScore(increment) {
   currentScore.innerHTML = score;
 }
 
-// check if word is valid
+// check if word is valid. Accepts a string
 function isValidWord(word) {
-  // hasn't been used already
-  // is in the valid words array/object
-  // return true if good otherwise false
+  if (typeof word === "string") {
+    if (
+      !usedWords.includes(word.toUpperCase()) &&
+      words.includes(word.toUpperCase())
+    ) {
+      return true;
+    }
+  }
+
+  // default return
+  return false;
 }
