@@ -44,6 +44,7 @@ body {
 }
 
 #wordDisplay {
-  width: 5em;
+  width: 100%;
   background-color: white;
+  margin-bottom: 1vh;
 }
