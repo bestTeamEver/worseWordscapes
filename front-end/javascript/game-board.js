@@ -34,6 +34,7 @@ function insertCharacters(characters) {
   placeCharacterCircles();
 }
 
+// places the character circles in a circular fashion around character-container div.
 function placeCharacterCircles() {
   const character_container = document.querySelector("#character-container");
   const list = document.getElementById("characters");
