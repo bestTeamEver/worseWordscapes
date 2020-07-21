@@ -1,6 +1,7 @@
 // grab the current leaderboard and display it in #leaderboard
 document.getElementById("leaderboard").appendChild(getLeaderBoard());
 
+// frequency of each letter in english language.
 const letterFrequencies = {
   E: 0.1202,
   T: 0.091,
@@ -34,12 +35,13 @@ const letterFrequencies = {
 let characters = getRoundCharacters(6);
 let words;
 let usedWords = [];
-getWords(characters);
+getWords(characters); // will assign to the variable 'words' at some point. see getWords()
 
 insertCharacters(characters);
 
 // }                -----------------------------------------------------
 
+// pulls the leaderboard data from db. Returns a filled out leaderboard HTML element.
 function getLeaderBoard() {
   // pull from a database somewhere.
 
@@ -58,6 +60,7 @@ function getLeaderBoard() {
   return createLeaderboardElement(entries);
 }
 
+// creates and returns a leaderboard HTML element. Accepts an array of objects with {name, score}
 function createLeaderboardElement(entries) {
   const leaderboard = document.createElement("ul");
   leaderboard.setAttribute("class", "list-group");
@@ -81,7 +84,7 @@ function createLeaderboardElement(entries) {
   return leaderboard;
 }
 
-// get the characters for this round
+// get the characters for this round. accepts a number for number of characters to use
 function getRoundCharacters(numCharacters) {
   const characters = [];
 
@@ -92,6 +95,7 @@ function getRoundCharacters(numCharacters) {
   return characters;
 }
 
+// finds the appropiate letter from the frequency table (requires number to be between 0 and 1, otherwise only return 'Z')
 function getValueFromLetterFreqs(num) {
   let returning;
   let sum = 0;
@@ -104,7 +108,8 @@ function getValueFromLetterFreqs(num) {
   return "Z"; // default return if doesn't work
 }
 
-// load all the possible words into a data structure. Take in an array of characters
+// load all the possible words into a data structure. Takes in an array of characters, assigns
+// response from fetch call to the global 'words' variable.
 function getWords(characters) {
   let query = characters.join("");
 
@@ -127,7 +132,7 @@ function updateScore(increment) {
   currentScore.innerHTML = score;
 }
 
-// check if word is valid. Accepts a string
+// check if word is valid. Accepts a string. Returns true or false
 function isValidWord(word) {
   if (typeof word === "string") {
     if (
