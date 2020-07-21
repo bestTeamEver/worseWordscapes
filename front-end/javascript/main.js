@@ -2,7 +2,61 @@
 document.getElementById("leaderboard").appendChild(getLeaderBoard());
 
 const characters = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+const charValues = {
+  A: 1,
+  B: 3,
+  C: 2,
+  D: 2,
+  E: 1,
+  F: 4,
+  G: 3,
+  H: 4,
+  I: 1,
+  J: 8,
+  K: 5,
+  L: 1,
+  M: 3,
+  N: 1,
+  O: 1,
+  P: 3,
+  Q: 10,
+  R: 1,
+  S: 1,
+  T: 1,
+  U: 1,
+  V: 4,
+  W: 4,
+  Y: 4,
+  X: 8,
+  Z: 10,
+};
+
 insertCharacters(characters);
+
+//start a new round
+function newRound(numberOfChars) {
+  //list of all letters
+  const chars = Object.keys(charValues);
+  //list to append chosen letters
+  let chosenChars = [];
+  //randomly get number of letters specified
+  for (let i = 0; i < numberOfChars; i++) {
+    chosenChars.push(chars[Math.floor(Math.random() * chars.length)]);
+  }
+  insertCharacters(chosenChars);
+  let score = document.getElementById("current_score");
+  score.innerText = 0;
+  //new characters added
+}
+let startBtn = document.getElementById("startButton");
+
+startBtn.addEventListener("click", (e) => {
+  let numberInput = document.getElementById("numberInput").value;
+  numberInput !== ""
+    ? newRound(numberInput)
+    : alert("Please select a number of letters for this round");
+});
 
 function getLeaderBoard() {
   // pull from a database somewhere.

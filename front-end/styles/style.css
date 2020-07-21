@@ -25,10 +25,25 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
+.character-icon:active {
+  background: purple;
+  transform: translateY(0.5vw);
+}
+
 .inner-dot {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+#numberInput {
+  margin-top: 1vh;
+  width: 20vw;
+}
+
+#wordDisplay {
+  width: 5em;
+  background-color: white;
 }
