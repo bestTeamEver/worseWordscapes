@@ -1,6 +1,9 @@
 // grab the current leaderboard and display it in #leaderboard
 document.getElementById("leaderboard").appendChild(getLeaderBoard());
 
+const characters = ["A", "B", "C", "D", "E", "F", "G", "H"];
+insertCharacters(characters);
+
 function getLeaderBoard() {
   // pull from a database somewhere.
 

@@ -55,8 +55,3 @@
     return this;
   };
 })(jQuery);
-
-const character_container = document.querySelector("#character-container");
-let radius = Math.floor((character_container.clientWidth / 2) * 0.85);
-console.log(radius);
-$("#characters").incircle({ radius: `${radius}px`, top: `11em`, left: `11em` });
