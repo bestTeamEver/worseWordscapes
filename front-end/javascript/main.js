@@ -41,6 +41,73 @@ insertCharacters(characters);
 
 // }                -----------------------------------------------------
 
+/*
+----------------------Begin Event Listener Code-----------------------------------
+*/
+
+//start a new round with designated number of characeters
+function newRound(numberOfChars) {
+  //create list of all characters for the round
+  characters = getRoundCharacters(numberOfChars);
+  // insert the characters to the game board
+  insertCharacters(characters);
+  //use characters to set words
+  getWords(characters);
+
+  //reset score
+  // let score = document.getElementById("current_score");
+  // score.innerText = 0;
+
+  //clear word display input
+  clearInput();
+}
+
+//start button
+let startBtn = document.getElementById("startButton");
+
+//get number of characters from input
+//add characters to gameboard via newRound()
+//update words via getWords()
+startBtn.addEventListener("click", (e) => {
+  //use number input to set characters
+  let numberInput = document.getElementById("numberInput").value;
+  numberInput !== ""
+    ? newRound(numberInput)
+    : alert("Please select a number of letters for this round");
+});
+
+//function to clear word input /display
+function clearInput() {
+  document.getElementById("wordDisplay").value = "";
+}
+
+//clear word input on clear button click
+document.getElementById("clearInputBtn").addEventListener("click", (e) => {
+  clearInput();
+});
+
+//submit word input on submit button click
+document.getElementById("submitInput").addEventListener("click", (e) => {
+  let wordInput = document.getElementById("wordDisplay").value;
+  clearInput();
+
+  console.log(wordInput);
+});
+
+//submit word input on enter keypress
+document.getElementById("wordDisplay").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    let wordInput = document.getElementById("wordDisplay").value;
+    clearInput();
+
+    console.log(wordInput);
+  }
+});
+
+/* 
+-------------------------------End of Event Listener Code--------------------------------------------
+*/
+
 // pulls the leaderboard data from db. Returns a filled out leaderboard HTML element.
 function getLeaderBoard() {
   // pull from a database somewhere.
