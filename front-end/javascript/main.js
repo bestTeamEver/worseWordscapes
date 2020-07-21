@@ -89,18 +89,17 @@ document.getElementById("clearInputBtn").addEventListener("click", (e) => {
 //submit word input on submit button click
 document.getElementById("submitInput").addEventListener("click", (e) => {
   let wordInput = document.getElementById("wordDisplay").value;
+  // getWordScore(wordInput);
+  updateScore(getWordScore(wordInput));
   clearInput();
-
-  console.log(wordInput);
 });
 
 //submit word input on enter keypress
 document.getElementById("wordDisplay").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     let wordInput = document.getElementById("wordDisplay").value;
+    updateScore(getWordScore(wordInput));
     clearInput();
-
-    console.log(wordInput);
   }
 });
 
@@ -141,7 +140,6 @@ function createLeaderboardElement(entries) {
     const score = document.createElement("span");
     score.setAttribute("class", "badge badge-primary badge-pill");
     score.innerText = item.score;
-
     entry.innerText = item.name;
     entry.appendChild(score);
 
@@ -194,8 +192,7 @@ function getWords(characters) {
 // update the current score
 function updateScore(increment) {
   const currentScore = document.querySelector("#current_score");
-  let score = currentScore.innerHTML + increment;
-
+  let score = parseInt(currentScore.innerHTML) + increment;
   currentScore.innerHTML = score;
 }
 
@@ -207,9 +204,58 @@ function isValidWord(word) {
       words.includes(word.toUpperCase())
     ) {
       return true;
+
     }
   }
-
   // default return
   return false;
+}
+
+// SCRABBLE SCORE CODE
+// assigns points to each letter of the alphabet
+const letterVals = {
+  "A": 1,
+  "B": 3,
+  "C": 3,
+  "D": 2,
+  "E": 1,
+  "F": 4,
+  "G": 2,
+  "H": 4,
+  "I": 1,
+  "J": 8,
+  "K": 5,
+  "L": 1,
+  "M": 3,
+  "N": 1,
+  "O": 1,
+  "P": 3,
+  "Q": 10,
+  "R": 1,
+  "S": 1,
+  "T": 1,
+  "U": 1,
+  "V": 4,
+  "W": 4,
+  "X": 8,
+  "Y": 4,
+  "Z": 10
+}
+
+// get word, valiate, and score it
+function getWordScore(word) {
+  word = word.toUpperCase();
+  if(isValidWord(word)) {
+    usedWords.push(word);
+    words = words.filter(e => e !== word);
+    let wordScore = 0;
+  letterArray = word.split("");
+  for (let index = 0; index < letterArray.length; index++) {
+    const rawLetters = letterArray[index];
+    wordScore += letterVals[rawLetters] || 0;
+    }
+  return wordScore;
+  } else {
+  return 0;
+  }
 }
