@@ -23,10 +23,10 @@ function insertCharacters(characters) {
     character_list.appendChild(newEntry);
   });
 
-  const character_container = document.querySelector("#character-container");
-  let radius = Math.floor(
-    (character_container.parentElement.clientWidth / 2) * 0.75
-  );
+  //   const character_container = document.querySelector("#character-container");
+  //   let radius = Math.floor(
+  //     (character_container.parentElement.clientWidth / 2) * 0.75
+  //   );
 
   placeCharacterCircles();
 }

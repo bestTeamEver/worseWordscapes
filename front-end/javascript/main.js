@@ -15,7 +15,7 @@ function getLeaderBoard() {
   ];
 
   entries = entries.sort((item1, item2) => {
-    item1.score - item2.score;
+    item2.score - item1.score;
   });
 
   // make a list and put the entries in it
