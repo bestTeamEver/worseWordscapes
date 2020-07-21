@@ -21,18 +21,42 @@
         <div class="col leaderboard" id="leaderboard">
           <h3>High Scores</h3>
         </div>
+
+          <div class="col container" id="currentWord">
+
+            <h2 class="row" id=>Current Word</h2>
+            <div class="row"><input type= "text" id="wordDisplay"></input></div>
+              <div id ="submitInput"class="btn btn-primary">Submit</div>
+              <div id="clearInputBtn" class="btn btn-primary">Clear</div>
+
+          </div>
+
         <div class="col score" id="score">
           <h3>Score</h3>
           <span id="current_score">99</span>
         </div>
       </div>
+
       <div class="row fixed-bottom" id="interaction-area">
-        <div class="col">
-          <div class="btn btn-primary">New Round</div>
+        <div class="col" id="startContainer">
+          <div class="btn btn-primary" id="startButton">New Round</div>
+          <div>
+            <input
+              id="numberInput"
+              min="3"
+              max="8"
+              placeholder="How many Letters? (3-8)"
+              type="number"
+            />
+          </div>
         </div>
+
         <div class="col d-flex justify-content-center">
-          <div class="dot container" id="character-container">
-            <ul class="innder-dot" id="characters"></ul>
+          <div
+            class="dot container row align-self-center"
+            id="character-container"
+          >
+            <ul class="inner-dot" id="characters"></ul>
           </div>
         </div>
         <div class="col">

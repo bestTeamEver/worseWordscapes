@@ -5,6 +5,9 @@ function makeCharacterCircle(character) {
   const circle = document.createElement("div");
   circle.setAttribute("class", "character-icon");
   circle.innerText = character;
+  circle.addEventListener("click", (e) => {
+    document.getElementById("wordDisplay").value += e.target.innerText;
+  });
 
   return circle;
 }
