@@ -89,18 +89,17 @@ document.getElementById("clearInputBtn").addEventListener("click", (e) => {
 //submit word input on submit button click
 document.getElementById("submitInput").addEventListener("click", (e) => {
   let wordInput = document.getElementById("wordDisplay").value;
+  // getWordScore(wordInput);
+  updateScore(getWordScore(wordInput));
   clearInput();
-
-  console.log(wordInput);
 });
 
 //submit word input on enter keypress
 document.getElementById("wordDisplay").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     let wordInput = document.getElementById("wordDisplay").value;
+    updateScore(getWordScore(wordInput));
     clearInput();
-
-    console.log(wordInput);
   }
 });
 
@@ -141,7 +140,6 @@ function createLeaderboardElement(entries) {
     const score = document.createElement("span");
     score.setAttribute("class", "badge badge-primary badge-pill");
     score.innerText = item.score;
-
     entry.innerText = item.name;
     entry.appendChild(score);
 
@@ -194,7 +192,7 @@ function getWords(characters) {
 // update the current score
 function updateScore(increment) {
   const currentScore = document.querySelector("#current_score");
-  let score = currentScore.innerHTML + increment;
+  let score = parseInt(currentScore.innerHTML) + increment;
   currentScore.innerHTML = score;
 }
 
