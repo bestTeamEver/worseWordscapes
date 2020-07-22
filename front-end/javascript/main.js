@@ -70,8 +70,9 @@ function newGame(numberOfChars) {
   //clear word display input
   clearInput();
 
-  //start game with time of one minute
+  //clear current timer
   clearInterval(globalTime);
+  //start timer with given time in seconds
   gameTimer(5);
 }
 
