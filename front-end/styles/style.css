@@ -66,3 +66,8 @@ body {
 #character-container {
   position: relative;
 }
+
+#correctWordContainer {
+  max-height: 20vh;
+  background-color: white;
+}

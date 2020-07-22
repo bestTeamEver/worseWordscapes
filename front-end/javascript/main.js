@@ -70,9 +70,12 @@ function newGame(numberOfChars) {
   //clear word display input
   clearInput();
 
+  //clear correct words list
+  clearCorrectWordDisplay();
+
   //start game with time of one minute
   clearInterval(globalTime);
-  gameTimer(5);
+  gameTimer(60);
 }
 
 //start button
@@ -98,6 +101,10 @@ function clearInput() {
   document.getElementById("submitButton").style.visibility = "visible";
 }
 
+function clearCorrectWordDisplay() {
+  document.getElementById("correctWordContainer").innerHTML = "";
+}
+
 //clear word input on clear button click
 document.getElementById("clearInputBtn").addEventListener("click", (e) => {
   clearInput();
@@ -108,7 +115,7 @@ document.getElementById("submitButton").addEventListener("click", (e) => {
   let wordInput = document.getElementById("wordDisplay").value;
   let score = getWordScore(wordInput);
   //if correct run correct display else do wrong dispaly
-  score !== 0 ? correctWord() : wrongWord();
+  score !== 0 ? correctWord(wordInput) : wrongWord();
   updateScore(score);
   clearInput();
 });
@@ -126,12 +133,18 @@ document.getElementById("wordDisplay").addEventListener("keypress", (e) => {
 });
 
 //score section flash green on correct word
-function correctWord() {
+function correctWord(wordInput) {
   let score = document.getElementById("scoreDisplay");
   score.style.backgroundColor = "green";
   setTimeout(() => {
     score.style.backgroundColor = "";
   }, 1000);
+
+  let wordContainer = document.getElementById("correctWordContainer");
+  let word = document.createElement("p");
+  word.className = "p-1";
+  word.innerText = wordInput;
+  wordContainer.appendChild(word);
 }
 //have score section flash red
 function wrongWord() {

@@ -31,14 +31,7 @@
           <h3>High Scores</h3>
         </div>
 
-        <div class="col container" id="currentWord">
-
-            <h2 class="row" id=>Current Word</h2>
-            <div class="row"><input type= "text" id="wordDisplay" disabled></input></div>
-              <!-- <div class="btn btn-primary">Submit</div> -->
-              <div id="clearInputBtn" class="btn btn-primary">Clear</div>
-
-        </div>
+        
 
           <div class="col container">
 
@@ -70,6 +63,15 @@
               type="number"
             />
           </div>
+          <div class="col container" id="currentWord">
+
+            <h2 class="row" id=>Current Word</h2>
+            <div class="row"><input type= "text" id="wordDisplay" disabled></input></div>
+              <!-- <div class="btn btn-primary">Submit</div> -->
+              <div id="clearInputBtn" class="btn btn-primary">Clear</div>
+              <div id="hintButton" class="btn btn-primary">Hint</div>
+
+        </div>
         </div>
 
         <div class="col d-flex justify-content-center">
@@ -81,8 +83,12 @@
             <ul class="inner-dot" id="characters"></ul>
           </div>
         </div>
-        <div class="col">
-          <div id="hintButton" class="btn btn-primary">Hint</div>
+        <div class="col overflow-auto ml-3">
+          <h6>Correct Words This Round</h6>
+          <div id="correctWordContainer" class = "d-flex flex-row flex-wrap overflow-auto">
+
+          </div>
+          
         </div>
       </div>
     </div>
