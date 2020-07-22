@@ -1,6 +1,9 @@
 // prompt user for name on pageload and append to score span
-const playerName = prompt("Welcome to worseWordScapes! Please enter your name...", "Your name?");
-if (playerName !== null) {
+const playerName = prompt(
+  "Welcome to worseWordScapes! Please enter your name...",
+  "Player"
+);
+if (playerName !== null && playerName !== "") {
   document.getElementById("player_name").innerText = playerName;
 }
 
@@ -352,7 +355,7 @@ function sendHighScore(event) {
 
   // set up the values in the object
   // name
-  data.name = "Player1"; // hard coded now until name is prompted at beginning --------------------------
+  data.name = document.getElementById("player_name").innerText; // hard coded now until name is prompted at beginning --------------------------
   data.high_score = parseInt(
     document.querySelector("#current_score").innerText
   );
