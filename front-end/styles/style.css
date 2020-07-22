@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap");
 
+#jumbotron {
+  background-image: url("https://source.unsplash.com/Ni4NgA64TFQ/1200x800");
+}
+
 .dot {
   border-radius: 50%;
   width: 100%;
@@ -57,4 +61,8 @@ body {
   left: 50%;
   top: 50%;
   visibility: hidden;
+}
+
+#character-container {
+  position: relative;
 }
