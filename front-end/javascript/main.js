@@ -1,9 +1,9 @@
 // prompt user for name on pageload and append to score span
 const playerName = prompt(
   "Welcome to worseWordScapes! Please enter your name...",
-  "Your name?"
+  "Player"
 );
-if (playerName !== null) {
+if (playerName !== null && playerName !== "") {
   document.getElementById("player_name").innerText = playerName;
 }
 
@@ -64,7 +64,7 @@ function newGame(numberOfChars) {
   usedWords = [];
   //set score to zero
   document.getElementById("current_score").innerText = 0;
-
+  document.getElementById("roundCount").innerText = 1;
   //Reset Timer here
 
   //clear word display input
@@ -72,7 +72,7 @@ function newGame(numberOfChars) {
 
   //start game with time of one minute
   clearInterval(globalTime);
-  gameTimer(5);
+  gameTimer(60);
 }
 
 //start button
@@ -110,6 +110,7 @@ document.getElementById("submitButton").addEventListener("click", (e) => {
   //if correct run correct display else do wrong dispaly
   score !== 0 ? correctWord() : wrongWord();
   updateScore(score);
+  roundComplete();
   clearInput();
 });
 
@@ -168,6 +169,9 @@ function endGame() {
   document.getElementById("gameTimer").innerText = "Game Over";
   document.getElementById("characters").innerHTML = "";
   document.getElementById("submitButton").style.visibility = "hidden";
+  let baseScore = parseInt(document.getElementById("current_score").innerText);
+  document.getElementById("current_score").innerText = "Final score: " + parseInt(baseScore * rounds);
+  playOwenWilsonWow();
 }
 
 /* 
@@ -228,6 +232,32 @@ function playOwenWilsonWow() {
   const playRandSound = wows[Math.floor(Math.random() * wows.length)];
   //plays the sound
   playRandSound.play();
+}
+
+/*
+------------------------------------------End Sound Code------------------------------------
+*/
+/*
+-------------------------------------------Difficulty functions----------------------------
+*/
+
+let rounds = 1;
+function roundComplete() {
+  if ((usedWords.length/(words.length + usedWords.length)) >= 0.25){
+    newRound();
+    rounds += 1
+    document.getElementById("roundCount").innerText = rounds;
+  }
+}
+
+function newRound() {
+  //Get new set of characters upon round increment
+  characters = getRoundCharacters(document.getElementById("numberInput").value);
+  // insert the characters to the game board
+  insertCharacters(characters);
+  //use characters to set words
+  getWords(characters);
+  usedWords = [];
 }
 
 // pulls the leaderboard data from db. Returns a filled out leaderboard HTML element.
