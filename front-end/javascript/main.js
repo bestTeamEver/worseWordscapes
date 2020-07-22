@@ -32,12 +32,9 @@ const letterFrequencies = {
 };
 
 // round stuff { ---------------------------------------------------------
-let characters = getRoundCharacters(6);
+let characters;
 let words;
 let usedWords = [];
-getWords(characters); // will assign to the variable 'words' at some point. see getWords()
-
-insertCharacters(characters);
 
 // }                -----------------------------------------------------
 
@@ -46,7 +43,7 @@ insertCharacters(characters);
 */
 
 //start a new round with designated number of characeters
-function newRound(numberOfChars) {
+function newGame(numberOfChars) {
   //create list of all characters for the round
   characters = getRoundCharacters(numberOfChars);
   // insert the characters to the game board
@@ -54,9 +51,12 @@ function newRound(numberOfChars) {
   //use characters to set words
   getWords(characters);
 
-  //reset score
-  // let score = document.getElementById("current_score");
-  // score.innerText = 0;
+  //clear usedWords list
+  usedWords = [];
+  //set score to zero
+  document.getElementById("current_score").innerText = 0;
+
+  //Reset Timer here
 
   //clear word display input
   clearInput();
@@ -66,19 +66,23 @@ function newRound(numberOfChars) {
 let startBtn = document.getElementById("startButton");
 
 //get number of characters from input
-//add characters to gameboard via newRound()
+//add characters to gameboard via newGame()
 //update words via getWords()
 startBtn.addEventListener("click", (e) => {
   //use number input to set characters
   let numberInput = document.getElementById("numberInput").value;
   numberInput !== ""
-    ? newRound(numberInput)
+    ? newGame(numberInput)
     : alert("Please select a number of letters for this round");
 });
 
 //function to clear word input /display
 function clearInput() {
   document.getElementById("wordDisplay").value = "";
+  //reset character buttons
+  insertCharacters(characters);
+  //add submit button
+  document.getElementById("submitButton").style.visibility = "visible";
 }
 
 //clear word input on clear button click
@@ -87,10 +91,12 @@ document.getElementById("clearInputBtn").addEventListener("click", (e) => {
 });
 
 //submit word input on submit button click
-document.getElementById("submitInput").addEventListener("click", (e) => {
+document.getElementById("submitButton").addEventListener("click", (e) => {
   let wordInput = document.getElementById("wordDisplay").value;
-  // getWordScore(wordInput);
-  updateScore(getWordScore(wordInput));
+  let score = getWordScore(wordInput);
+  //if correct run correct display else do wrong dispaly
+  score !== 0 ? correctWord() : wrongWord();
+  updateScore(score);
   clearInput();
 });
 
@@ -98,9 +104,50 @@ document.getElementById("submitInput").addEventListener("click", (e) => {
 document.getElementById("wordDisplay").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     let wordInput = document.getElementById("wordDisplay").value;
-    updateScore(getWordScore(wordInput));
+    let score = getWordScore(wordInput);
+    //if correct run correct display else do wrong display
+    score !== 0 ? correctWord() : wrongWord();
+    updateScore(score);
     clearInput();
   }
+});
+
+//score section flash green on correct word
+function correctWord() {
+  let score = document.getElementById("score");
+  score.style.backgroundColor = "green";
+  setTimeout(() => {
+    score.style.backgroundColor = "";
+  }, 1000);
+}
+//have score section flash red
+function wrongWord() {
+  let score = document.getElementById("score");
+  score.style.backgroundColor = "red";
+  setTimeout(() => {
+    score.style.backgroundColor = "";
+  }, 1000);
+}
+
+//hint button highlights letters of a the last word in words list
+function showHint() {
+  let word = words[words.length - 1].split("");
+  //list of all html letter elements
+  let htmlLetters = [...document.getElementsByClassName("character-icon")];
+  //highlights html element if letter is in word array
+  //filters words every time to prevent duplicate letters being highlighted
+  //brute force
+  htmlLetters.forEach((element) => {
+    if (word.includes(element.innerText)) {
+      element.style.backgroundColor = "yellow";
+      word = word.filter((letter) => letter !== element.innerText);
+    }
+  });
+}
+
+//event listener to hint button
+document.getElementById("hintButton").addEventListener("click", (e) => {
+  showHint();
 });
 
 /* 
@@ -204,7 +251,6 @@ function isValidWord(word) {
       words.includes(word.toUpperCase())
     ) {
       return true;
-
     }
   }
   // default return
@@ -214,48 +260,48 @@ function isValidWord(word) {
 // SCRABBLE SCORE CODE
 // assigns points to each letter of the alphabet
 const letterVals = {
-  "A": 1,
-  "B": 3,
-  "C": 3,
-  "D": 2,
-  "E": 1,
-  "F": 4,
-  "G": 2,
-  "H": 4,
-  "I": 1,
-  "J": 8,
-  "K": 5,
-  "L": 1,
-  "M": 3,
-  "N": 1,
-  "O": 1,
-  "P": 3,
-  "Q": 10,
-  "R": 1,
-  "S": 1,
-  "T": 1,
-  "U": 1,
-  "V": 4,
-  "W": 4,
-  "X": 8,
-  "Y": 4,
-  "Z": 10
-}
+  A: 1,
+  B: 3,
+  C: 3,
+  D: 2,
+  E: 1,
+  F: 4,
+  G: 2,
+  H: 4,
+  I: 1,
+  J: 8,
+  K: 5,
+  L: 1,
+  M: 3,
+  N: 1,
+  O: 1,
+  P: 3,
+  Q: 10,
+  R: 1,
+  S: 1,
+  T: 1,
+  U: 1,
+  V: 4,
+  W: 4,
+  X: 8,
+  Y: 4,
+  Z: 10,
+};
 
 // get word, valiate, and score it
 function getWordScore(word) {
   word = word.toUpperCase();
-  if(isValidWord(word)) {
+  if (isValidWord(word)) {
     usedWords.push(word);
-    words = words.filter(e => e !== word);
+    words = words.filter((e) => e !== word);
     let wordScore = 0;
-  letterArray = word.split("");
-  for (let index = 0; index < letterArray.length; index++) {
-    const rawLetters = letterArray[index];
-    wordScore += letterVals[rawLetters] || 0;
+    letterArray = word.split("");
+    for (let index = 0; index < letterArray.length; index++) {
+      const rawLetters = letterArray[index];
+      wordScore += letterVals[rawLetters] || 0;
     }
-  return wordScore;
+    return wordScore;
   } else {
-  return 0;
+    return 0;
   }
 }

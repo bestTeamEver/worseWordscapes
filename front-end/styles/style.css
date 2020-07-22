@@ -24,7 +24,11 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
-.character-icon:active {
+#interaction-area {
+  margin-top: 10%;
+}
+
+.clickable:active {
   background: purple;
   transform: translateY(0.5vw);
 }
@@ -46,4 +50,11 @@ body {
   width: 100%;
   background-color: white;
   margin-bottom: 1vh;
+}
+
+#submitButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  visibility: hidden;
 }

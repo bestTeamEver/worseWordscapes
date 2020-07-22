@@ -26,7 +26,7 @@
 
             <h2 class="row" id=>Current Word</h2>
             <div class="row"><input type= "text" id="wordDisplay"></input></div>
-              <div id ="submitInput"class="btn btn-primary">Submit</div>
+              <!-- <div class="btn btn-primary">Submit</div> -->
               <div id="clearInputBtn" class="btn btn-primary">Clear</div>
 
           </div>
@@ -37,9 +37,9 @@
         </div>
       </div>
 
-      <div class="row fixed-bottom" id="interaction-area">
+      <div class="row" id="interaction-area">
         <div class="col" id="startContainer">
-          <div class="btn btn-primary" id="startButton">New Round</div>
+          <div class="btn btn-primary" id="startButton">New Game</div>
           <div>
             <input
               id="numberInput"
@@ -53,14 +53,15 @@
 
         <div class="col d-flex justify-content-center">
           <div
-            class="dot container row align-self-center"
+            class="dot container align-self-center"
             id="character-container"
           >
+          <div id="submitButton"class="btn btn-primary" >Submit</div>
             <ul class="inner-dot" id="characters"></ul>
           </div>
         </div>
         <div class="col">
-          <div class="btn btn-primary">Hint</div>
+          <div id="hintButton" class="btn btn-primary">Hint</div>
         </div>
       </div>
     </div>

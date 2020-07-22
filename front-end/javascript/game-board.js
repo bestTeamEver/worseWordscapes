@@ -1,13 +1,25 @@
 // add a listener to change the widths
 
+//function to enable clicking of buttons once
+function clickOnce(e) {
+  //add letter to display
+  document.getElementById("wordDisplay").value += e.target.innerText;
+  //remove clicking css style
+  e.target.classList.remove("clickable");
+  //change background
+  e.target.style.background = "purple";
+  //remove event listener for clicking
+  e.target.removeEventListener("click", clickOnce);
+}
+
 // make character circles
 function makeCharacterCircle(character) {
   const circle = document.createElement("div");
-  circle.setAttribute("class", "character-icon");
+  //clickable class used for clickable functionality
+  circle.setAttribute("class", "character-icon clickable");
   circle.innerText = character;
-  circle.addEventListener("click", (e) => {
-    document.getElementById("wordDisplay").value += e.target.innerText;
-  });
+  //add clickable functionality
+  circle.addEventListener("click", clickOnce);
 
   return circle;
 }
