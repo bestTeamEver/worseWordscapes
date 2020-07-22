@@ -69,6 +69,7 @@ function newGame(numberOfChars) {
 
   //clear word display input
   clearInput();
+  document.getElementById("clearInputBtn").style.visibility = "visible";
 
   //start game with time of one minute
   clearInterval(globalTime);
@@ -168,6 +169,7 @@ function endGame() {
   document.getElementById("gameTimer").innerText = "Game Over";
   document.getElementById("characters").innerHTML = "";
   document.getElementById("submitButton").style.visibility = "hidden";
+  document.getElementById("clearInputBtn").style.visibility = "hidden";
 }
 
 /* 
@@ -185,6 +187,9 @@ function gameTimer(time) {
     if (seconds === 0) {
       endGame();
       clearInterval(globalTime);
+      if (window.confirm("Save Score?")) {
+        sendHighScore();
+      }
     }
     seconds -= 1;
   }, 1000);
@@ -232,6 +237,9 @@ function playOwenWilsonWow() {
 
 // pulls the leaderboard data from db. Places a filled out html leaderboard element into #leaderboard
 function getLeaderBoard() {
+  // clear the past leaderboard
+  document.getElementById("leaderboard").innerHTML = "";
+
   // pull from a database somewhere.
   fetch("https://word-scapes.herokuapp.com/scores?limit=5")
     .then((res) => res.json())
@@ -398,5 +406,8 @@ function sendHighScore(event) {
     body: JSON.stringify(data),
   })
     .then((res) => res.json())
-    .then((data) => console.log("Response:", data));
+    .then((data) => {
+      console.log("Response:", data);
+      setTimeout(getLeaderBoard(), 500);
+    });
 }
