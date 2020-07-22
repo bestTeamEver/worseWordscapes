@@ -55,8 +55,7 @@ function placeCharacterCircles() {
   let radius = Math.floor(
     (character_container.parentElement.clientWidth / 2) * 0.75
   );
-  let offset =
-    document.getElementsByClassName("character-icon")[0].clientWidth / 10;
+  let offset = (list.clientWidth - 40) / 10;
 
   let angle = 360 / list.childElementCount; // shift around to start at top of circle
 
@@ -73,9 +72,9 @@ function placeCharacterCircles() {
 
     // translate to right position;
     item.style.position = "absolute";
-    item.style.transform = `rotate(${
-      angle * index
-    }deg) translate(${radius}px) rotate(${angle * index * -1}deg)`;
+    item.style.transform = `rotate(${angle * index}deg) translate(${
+      radius - offset
+    }px) rotate(${angle * index * -1}deg)`;
   });
 
   // add final css touches
@@ -89,7 +88,8 @@ function placeCharacterCircles() {
 
 // add an observer for the character container (to be responsive)
 const ro = new ResizeObserver((entries) => {
-  for (entry in entries) {
+  for (entry of entries) {
+    entry.target.style.height = `${entry.target.clientWidth}px`;
     placeCharacterCircles();
   }
 });

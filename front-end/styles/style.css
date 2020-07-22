@@ -62,3 +62,7 @@ body {
   top: 50%;
   visibility: hidden;
 }
+
+#character-container {
+  position: relative;
+}
