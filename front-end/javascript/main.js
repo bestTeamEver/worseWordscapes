@@ -1,15 +1,9 @@
 // prompt user for name on pageload and append to score span
 const playerName = prompt(
   "Welcome to worseWordScapes! Please enter your name...",
-<<<<<<< HEAD
   "Player"
 );
 if (playerName !== null && playerName !== "") {
-=======
-  "Your name?"
-);
-if (playerName !== null) {
->>>>>>> master
   document.getElementById("player_name").innerText = playerName;
 }
 
