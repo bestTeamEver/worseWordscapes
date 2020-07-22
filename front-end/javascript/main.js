@@ -1,3 +1,10 @@
+const playerName = prompt("Welcome to worseWordScapes! Please enter your name...", "Your name?");
+if (playerName !== null) {
+  document.getElementById("player_name").innerText = playerName;
+}
+// prompt user for name on pageload and append to score span
+https://github.com/bestTeamEver/worseWordscapes.git
+
 // grab the current leaderboard and display it in #leaderboard
 document.getElementById("leaderboard").appendChild(getLeaderBoard());
 
