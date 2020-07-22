@@ -1,3 +1,12 @@
+// prompt user for name on pageload and append to score span
+const playerName = prompt(
+  "Welcome to worseWordScapes! Please enter your name...",
+  "Your name?"
+);
+if (playerName !== null) {
+  document.getElementById("player_name").innerText = playerName;
+}
+
 // grab the current leaderboard and display it in #leaderboard
 document.getElementById("leaderboard").appendChild(getLeaderBoard());
 
@@ -63,7 +72,7 @@ function newGame(numberOfChars) {
 
   //start game with time of one minute
   clearInterval(globalTime);
-  gameTimer(60);
+  gameTimer(5);
 }
 
 //start button
@@ -118,7 +127,7 @@ document.getElementById("wordDisplay").addEventListener("keypress", (e) => {
 
 //score section flash green on correct word
 function correctWord() {
-  let score = document.getElementById("score");
+  let score = document.getElementById("scoreDisplay");
   score.style.backgroundColor = "green";
   setTimeout(() => {
     score.style.backgroundColor = "";
@@ -126,7 +135,7 @@ function correctWord() {
 }
 //have score section flash red
 function wrongWord() {
-  let score = document.getElementById("score");
+  let score = document.getElementById("scoreDisplay");
   score.style.backgroundColor = "red";
   setTimeout(() => {
     score.style.backgroundColor = "";
