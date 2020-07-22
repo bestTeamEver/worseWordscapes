@@ -62,3 +62,45 @@ body {
   top: 50%;
   visibility: hidden;
 }
+
+#tr_header {
+  margin-top: 1vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+#gameTimer {
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+#currentWord {
+  text-align: center;
+}
+
+#score {
+  text-align: center;
+}
+
+#roundContainer {
+  margin-top: 4vh;
+  text-align: center;
+}
+
+#roundCount {
+  font-weight: bold;
+  font-size: 3vh;
+}
+
+#player_name {
+  font-weight: bold;
+  font-size: 2vh;
+}
+
+#current_score {
+  font-weight: bold;
+  font-size: 2vh;
+}
+#character-container {
+  position: relative;
+}

@@ -34,31 +34,33 @@
         <div class="col container" id="currentWord">
 
             <h2 class="row" id=>Current Word</h2>
-            <div class="row"><input type= "text" id="wordDisplay"></input></div>
+            <div class="row"><input type= "text" id="wordDisplay" disabled></input></div>
               <!-- <div class="btn btn-primary">Submit</div> -->
               <div id="clearInputBtn" class="btn btn-primary">Clear</div>
-
+              <h3 class="col" id="tr_header">Time Remaining</h3>
+              <span class="col" id="gameTimer"></span>
         </div>
 
           <div class="col container">
-
-        <div class="row container" id="score">
-          <h3 id = "scoreDisplay" class="col">Score</h3>
-          <h3 class = "col">Time Remaining</h3>
-        </div>
-
-        <div class="row container" id="timer">
+        <div class="col container" id="score">
+          <h3 id="scoreDisplay" class="col">Score</h3>
           <span id="player_name">Player</span>
           <span class = "col" id="current_score">0</span>
-          <span class = "col" id="gameTimer"></span>
         </div>
+        <div id="roundContainer" class="col container">
+          <h3 id="roundHeader" class="col">Round</h3>
+          <span class="col" id="roundCount">1</span>
+        </div>
+        <div class="row container">
+          
+        </div>
+
       </div>
       </div>
 
-
+      
 
       <div class="row border border-primary mb-5 p-5" id="interaction-area">
-
         <div class="col" id="startContainer">
           <div class="btn btn-primary" id="startButton">New Game</div>
           <div>
@@ -66,18 +68,18 @@
               id="numberInput"
               min="3"
               max="8"
-              placeholder="How many Letters? (3-8)"
+              placeholder="# of characters? (3-8)"
               type="number"
             />
           </div>
-        </div>
+    
 
         <div class="col d-flex justify-content-center">
           <div
             class="dot container align-self-center"
             id="character-container"
           >
-          <div id="submitButton"class="btn btn-primary" >Submit</div>
+          <div id="submitButton"class="btn btn-primary">Submit</div>
             <ul class="inner-dot" id="characters"></ul>
           </div>
         </div>
