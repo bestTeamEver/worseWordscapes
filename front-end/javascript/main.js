@@ -60,6 +60,10 @@ function newGame(numberOfChars) {
 
   //clear word display input
   clearInput();
+
+  //start game with time of one minute
+  clearInterval(globalTime);
+  gameTimer(60);
 }
 
 //start button
@@ -150,9 +154,35 @@ document.getElementById("hintButton").addEventListener("click", (e) => {
   showHint();
 });
 
+//game over function
+function endGame() {
+  document.getElementById("gameTimer").innerText = "Game Over";
+  document.getElementById("characters").innerHTML = "";
+  document.getElementById("submitButton").style.visibility = "hidden";
+}
+
 /* 
 -------------------------------End of Event Listener Code--------------------------------------------
 */
+
+// -------------------------------------Timer functionality----------------------------------------
+
+let timeDisplay = document.getElementById("gameTimer");
+let globalTime;
+function gameTimer(time) {
+  let seconds = parseInt(time);
+  globalTime = setInterval(() => {
+    timeDisplay.innerHTML = seconds;
+    if (seconds === 0) {
+      endGame();
+      clearInterval(globalTime);
+    }
+    seconds -= 1;
+  }, 1000);
+  //need not hardcoded input method
+}
+
+//--------------------------------------End Timer Functionality------------------------------------
 /*
 ------------------------------------Sound Feature Code-----------------------------------------------
 */
@@ -181,16 +211,15 @@ const wows = [
   new Audio("assets/soundFiles/woww.mp3"),
   new Audio("assets/soundFiles/wowx.mp3"),
   new Audio("assets/soundFiles/wowy.mp3"),
-  new Audio("assets/soundFiles/wowz.mp3")
+  new Audio("assets/soundFiles/wowz.mp3"),
 ];
 // play random audio file on successful word validation
 function playOwenWilsonWow() {
   //random selection of sounds to play from files
-  const playRandSound = wows[Math.floor(Math.random()*wows.length)];
+  const playRandSound = wows[Math.floor(Math.random() * wows.length)];
   //plays the sound
   playRandSound.play();
 }
-
 
 // pulls the leaderboard data from db. Returns a filled out leaderboard HTML element.
 function getLeaderBoard() {

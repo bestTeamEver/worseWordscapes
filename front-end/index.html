@@ -17,7 +17,14 @@
   </head>
   <body>
     <div class="container" id="main">
-      <div class="row" id="scoreboard">
+      <div id="jumbotron" class="row jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class= "display-4">WordScapes</h1>
+          <h6 class = "display-6">but not as good</h6>
+        </div>
+      </div>
+
+      <div class="row border border-primary p-5" id="scoreboard">
         <div class="col leaderboard" id="leaderboard">
           <h3>High Scores</h3>
         </div>
@@ -31,13 +38,24 @@
 
           </div>
 
-        <div class="col score" id="score">
-          <h3>Score</h3>
-          <span id="current_score">0</span>
+      <div class="col container">
+
+        <div class="row score container" id="labels">
+          <h3 class="col" id="score">Score</h3>
+          <h3 class = "col">Time Remaining</h3>
+         
         </div>
+
+        <div class="row container" id="timer">
+          <span class = "col" id="current_score">0</span>
+          <span class = "col" id="gameTimer"></span>
+        </div>
+
       </div>
 
-      <div class="row" id="interaction-area">
+      </div>
+
+      <div class="row border border-primary mb-5 p-5" id="interaction-area">
         <div class="col" id="startContainer">
           <div class="btn btn-primary" id="startButton">New Game</div>
           <div>
