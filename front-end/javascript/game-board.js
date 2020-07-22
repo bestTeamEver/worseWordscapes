@@ -84,9 +84,6 @@ function placeCharacterCircles() {
   list.style["list-style-type"] = "none";
   list.style.margin = 0;
   list.style.padding = 0;
-
-  // put the submit button in the right spot
-  const submitBtn = document.getElementById("submitButon");
 }
 
 // add an observer for the character container (to be responsive)
