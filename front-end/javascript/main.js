@@ -106,6 +106,44 @@ document.getElementById("wordDisplay").addEventListener("keypress", (e) => {
 /* 
 -------------------------------End of Event Listener Code--------------------------------------------
 */
+/*
+------------------------------------Sound Feature Code-----------------------------------------------
+*/
+//array that houses all sounds
+const wows = [
+  new Audio("assets/soundFiles/wowa.mp3"),
+  new Audio("assets/soundFiles/wowb.mp3"),
+  new Audio("assets/soundFiles/wowc.mp3"),
+  new Audio("assets/soundFiles/wowe.mp3"),
+  new Audio("assets/soundFiles/wowd.mp3"),
+  new Audio("assets/soundFiles/wowf.mp3"),
+  new Audio("assets/soundFiles/wowg.mp3"),
+  new Audio("assets/soundFiles/wowh.mp3"),
+  new Audio("assets/soundFiles/wowi.mp3"),
+  new Audio("assets/soundFiles/wowj.mp3"),
+  new Audio("assets/soundFiles/wowk.mp3"),
+  new Audio("assets/soundFiles/wowl.mp3"),
+  new Audio("assets/soundFiles/wowm.mp3"),
+  new Audio("assets/soundFiles/wown.mp3"),
+  new Audio("assets/soundFiles/wowp.mp3"),
+  new Audio("assets/soundFiles/wowq.mp3"),
+  new Audio("assets/soundFiles/wowr.mp3"),
+  new Audio("assets/soundFiles/wows.mp3"),
+  new Audio("assets/soundFiles/wowu.mp3"),
+  new Audio("assets/soundFiles/wowv.mp3"),
+  new Audio("assets/soundFiles/woww.mp3"),
+  new Audio("assets/soundFiles/wowx.mp3"),
+  new Audio("assets/soundFiles/wowy.mp3"),
+  new Audio("assets/soundFiles/wowz.mp3")
+];
+// play random audio file on successful word validation
+function playOwenWilsonWow() {
+  //random selection of sounds to play from files
+  const playRandSound = wows[Math.floor(Math.random()*wows.length)];
+  //plays the sound
+  playRandSound.play();
+}
+
 
 // pulls the leaderboard data from db. Returns a filled out leaderboard HTML element.
 function getLeaderBoard() {
@@ -203,8 +241,8 @@ function isValidWord(word) {
       !usedWords.includes(word.toUpperCase()) &&
       words.includes(word.toUpperCase())
     ) {
+      playOwenWilsonWow();
       return true;
-
     }
   }
   // default return
