@@ -183,7 +183,8 @@ function endGame() {
   document.getElementById("characters").innerHTML = "";
   document.getElementById("submitButton").style.visibility = "hidden";
   let baseScore = parseInt(document.getElementById("current_score").innerText);
-  document.getElementById("current_score").innerText = "Final score: " + parseInt(baseScore * rounds);
+  document.getElementById("current_score").innerText =
+    "Final score: " + parseInt(baseScore * rounds);
   playOwenWilsonWow();
 }
 
@@ -256,9 +257,9 @@ function playOwenWilsonWow() {
 
 let rounds = 1;
 function roundComplete() {
-  if ((usedWords.length/(words.length + usedWords.length)) >= 0.25){
+  if (usedWords.length / (words.length + usedWords.length) >= 0.25) {
     newRound();
-    rounds += 1
+    rounds += 1;
     document.getElementById("roundCount").innerText = rounds;
   }
 }
@@ -271,6 +272,8 @@ function newRound() {
   //use characters to set words
   getWords(characters);
   usedWords = [];
+  //clear correct words display
+  clearCorrectWordDisplay();
 }
 
 // pulls the leaderboard data from db. Returns a filled out leaderboard HTML element.
