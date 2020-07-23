@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Worse Wordscapes</title>
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+
     <!-- Bootstrap Css -->
     <link
       rel="stylesheet"
@@ -15,77 +18,99 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="styles/style.css" />
   </head>
-  <body>
-    <div class="container" id="main">
+  <body class="bg-secondary">
+
+    <div class="container border border-primary bg-light" id="main">
 
       <div id="jumbotron" class="row jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class= "display-4">WordScapes</h1>
-          <h6 class = "display-6">but not as good</h6>
+          <h6 id="finePrint" class = "display-10">but not as good</h6>
         </div>
       </div>
 
-      <div class="row border border-primary p-5" id="scoreboard">
+      <div class="row d-flex flex-wrap" id="scoreboard">
 
-        <div class="col leaderboard" id="leaderboard">
+        <div class="col-md">
           <h3>High Scores</h3>
+          <div class="leaderboard" id="leaderboard">
+          </div>
         </div>
-
-        <div class="col container" id="currentWord">
-
-            <h2 class="row" id=>Current Word</h2>
-            <div class="row"><input type= "text" id="wordDisplay" disabled></input></div>
-              <!-- <div class="btn btn-primary">Submit</div> -->
-              <div id="clearInputBtn" class="btn btn-primary">Clear</div>
-              <h3 class="col" id="tr_header">Time Remaining</h3>
+        
+        <div class="col-md d-flex flex-column align-items-center container border border-danger rounded m-1" id="currentWord">
+              <h3 class="col p-2" id="tr_header">Time Remaining</h3>
               <span class="col" id="gameTimer"></span>
         </div>
 
-          <div class="col container">
-        <div class="col container" id="score">
-          <h3 id="scoreDisplay" class="col">Score</h3>
-          <span id="player_name">Player</span>
-          <span class = "col" id="current_score">0</span>
-        </div>
-        <div id="roundContainer" class="col container">
-          <h3 id="roundHeader" class="col">Round</h3>
-          <span class="col" id="roundCount">1</span>
-        </div>
-        <div class="row container">
-          
+        <div class="col-md container">
+
+          <div class="col container border border-danger rounded m-1" id="score">
+            <h3 id="scoreDisplay" class="col">Score</h3>
+            <span id="player_name">Player</span>
+            <span class = "col" id="current_score">0</span>
+          </div>
+
+          <div id="roundContainer" class="col container border border-danger rounded m-1">
+            <h3 id="roundHeader" class="col">Round</h3>
+            <span class="col" id="roundCount">1</span>
+          </div>
+
         </div>
 
-      </div>
       </div>
 
       
 
-      <div class="row border border-primary mb-5 p-5" id="interaction-area">
-        <div class="col" id="startContainer">
+      <div class="row d-flex flex-wrap border border-success rounded m-1" id="interaction-area">
+
+        <div class="col-md" id="startContainer">
+          
           <div class="btn btn-primary" id="startButton">New Game</div>
-          <div>
-            <input
+            <div>
+              <input
               id="numberInput"
               min="3"
               max="8"
               placeholder="# of characters? (3-8)"
               type="number"
-            />
-          </div>
-    
+              />
+            </div>
+          
+        
+        </div>
 
-        <div class="col d-flex justify-content-center">
+        <div class="col-md d-flex justify-content-center m-2">
+          
           <div
             class="dot container align-self-center"
             id="character-container"
           >
+
           <div id="submitButton"class="btn btn-primary">Submit</div>
-            <ul class="inner-dot" id="characters"></ul>
+          <ul class="inner-dot" id="characters"></ul>
+
           </div>
+
         </div>
-        <div class="col">
+
+        <div class="col-md mr-2 ml-5">
+
+          <h2 class="row" id=>Current Word</h2>
+          <div class="row"><input type= "text" id="wordDisplay" disabled></input></div>
+
+          <div id="clearInputBtn" class="btn btn-primary">Clear</div>
           <div id="hintButton" class="btn btn-primary">Hint</div>
+
+          <div class="col m-0 p-0 pt-2 overflow-auto">
+            <h6>Correct Words This Round</h6>
+            <div id="correctWordContainer" class = "d-flex flex-row flex-wrap overflow-auto">
+            </div>
+          </div>
+
         </div>
+
+        
+
       </div>
     </div>
 

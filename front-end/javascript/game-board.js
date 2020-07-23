@@ -7,7 +7,7 @@ function clickOnce(e) {
   //remove clicking css style
   e.target.classList.remove("clickable");
   //change background
-  e.target.style.background = "purple";
+  e.target.style.background = "red";
   //remove event listener for clicking
   e.target.removeEventListener("click", clickOnce);
 }
