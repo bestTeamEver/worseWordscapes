@@ -117,6 +117,16 @@ function wrongWord() {
   }, 1000);
 }
 
+//have round flash when round changes
+function alertNewRound() {
+  console.log("changeRound");
+  let roundTitle = document.getElementById("roundHeader");
+  roundTitle.style.backgroundColor = "yellow";
+  setTimeout(() => {
+    roundTitle.style.backgroundColor = "";
+  }, 1000);
+}
+
 //hint button highlights letters of a the last word in words list
 function showHint() {
   let word = words[words.length - 1].split("");
@@ -270,6 +280,8 @@ function roundComplete() {
   if (usedWords.length / (words.length + usedWords.length) >= 0.25) {
     newRound(document.getElementById("numberInput").value);
     rounds += 1;
+    //flash yellow on round title
+    alertNewRound();
     document.getElementById("roundCount").innerText = rounds;
   }
   return "Z"; // default return if doesn't work
