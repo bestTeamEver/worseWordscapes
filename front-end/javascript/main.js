@@ -48,9 +48,7 @@ let startBtn = document.getElementById("numberInput");
 startBtn.addEventListener("change", (e) => {
   //use number input to set characters
   let numberInput = document.getElementById("numberInput").value;
-  numberInput !== ""
-    ? newGame(numberInput)
-    : alert("Please select a number of letters for this round");
+  newGame(numberInput);
 });
 
 //function to clear word input /display
