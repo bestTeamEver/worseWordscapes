@@ -20,22 +20,14 @@ getLeaderBoard();
 
 //start a new round with designated number of characeters
 function newGame(numberOfChars) {
-  //create list of all characters for the round
-  characters = getRoundCharacters(numberOfChars);
-  // insert the characters to the game board
-  insertCharacters(characters);
-  //use characters to set words
-  getWords(characters);
+  newRound(numberOfChars);
 
-  //clear usedWords list
-  usedWords = [];
   //set score to zero
   document.getElementById("current_score").innerText = 0;
   document.getElementById("roundCount").innerText = 1;
   //Reset Timer here
 
-  //clear word display input
-  clearInput();
+  document.getElementById("submitButton").style.visibility = "visible";
   document.getElementById("clearInputBtn").style.visibility = "visible";
 
   //clear correct words list
@@ -44,6 +36,7 @@ function newGame(numberOfChars) {
   //start game with time of one minute
   clearInterval(globalTime);
   gameTimer(60);
+  rounds = 1;
 }
 
 //start button
@@ -275,20 +268,20 @@ function createLeaderboardElement(entries) {
 let rounds = 1;
 function roundComplete() {
   if (usedWords.length / (words.length + usedWords.length) >= 0.25) {
-    newRound();
+    newRound(document.getElementById("numberInput").value);
     rounds += 1;
     document.getElementById("roundCount").innerText = rounds;
   }
   return "Z"; // default return if doesn't work
 }
 
-function newRound() {
+function newRound(numberOfChars) {
   //Get new set of characters upon round increment
-  characters = getRoundCharacters(document.getElementById("numberInput").value);
+  // characters = getRoundCharacters(numberOfChars);
   // insert the characters to the game board
-  insertCharacters(characters);
+  // insertCharacters(characters);
   //use characters to set words
-  getWords(characters);
+  getWords(numberOfChars);
   usedWords = [];
 }
 
