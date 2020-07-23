@@ -146,7 +146,7 @@ function correctWord(wordInput) {
   let word = document.createElement("p");
   word.className = "p-1";
   word.innerText = wordInput;
-  wordContainer.appendChild(word);
+  wordContainer.prepend(word);
 }
 //have score section flash red
 function wrongWord() {

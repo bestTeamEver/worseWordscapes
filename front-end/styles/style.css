@@ -20,7 +20,7 @@ body {
 }
 
 .character-icon {
-  background: hotpink;
+  background: rgb(25, 218, 25);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@ body {
 }
 
 .clickable:active {
-  background: purple;
+  background: rgb(252, 59, 59);
   transform: translateY(0.5vw);
 }
 
@@ -120,6 +120,11 @@ body {
 }
 
 #numberInput {
+  font-family: "Orbitron", sans-serif;
+  font-size: medium;
+}
+
+#correctWordContainer {
   font-family: "Orbitron", sans-serif;
   font-size: medium;
 }
