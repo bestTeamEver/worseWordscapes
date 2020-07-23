@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="row border border-primary p-5" id="scoreboard">
+      <div class="row p-5" id="scoreboard">
 
         <div class="col leaderboard" id="leaderboard">
           <h3>High Scores</h3>
@@ -33,10 +33,7 @@
 
         <div class="col container" id="currentWord">
 
-            <h2 class="row" id=>Current Word</h2>
-            <div class="row"><input type= "text" id="wordDisplay" disabled></input></div>
-              <!-- <div class="btn btn-primary">Submit</div> -->
-              <div id="clearInputBtn" class="btn btn-primary">Clear</div>
+            
               <h3 class="col" id="tr_header">Time Remaining</h3>
               <span class="col" id="gameTimer"></span>
         </div>
@@ -60,7 +57,7 @@
 
       
 
-      <div class="row border border-primary mb-5 p-5" id="interaction-area">
+      <div class="row  mb-5 p-5" id="interaction-area">
         <div class="col" id="startContainer">
           <div class="btn btn-primary" id="startButton">New Game</div>
           <div>
@@ -72,7 +69,16 @@
               type="number"
             />
           </div>
-    
+          
+              
+          <div class="col m-0 p-0 pt-2 overflow-auto ml-3">
+            <h6>Correct Words This Round</h6>
+            <div id="correctWordContainer" class = "d-flex flex-row flex-wrap overflow-auto">
+            </div>
+          </div>
+
+        
+        </div>
 
         <div class="col d-flex justify-content-center">
           <div
@@ -83,9 +89,17 @@
             <ul class="inner-dot" id="characters"></ul>
           </div>
         </div>
-        <div class="col">
+
+        <div class="col ml-5">
+          <h2 class="row" id=>Current Word</h2>
+            <div class="row"><input type= "text" id="wordDisplay" disabled></input></div>
+
+              <div id="clearInputBtn" class="btn btn-primary">Clear</div>
           <div id="hintButton" class="btn btn-primary">Hint</div>
         </div>
+
+        
+
       </div>
     </div>
 
