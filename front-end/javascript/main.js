@@ -40,12 +40,12 @@ function newGame(numberOfChars) {
 }
 
 //start button
-let startBtn = document.getElementById("startButton");
+let startBtn = document.getElementById("numberInput");
 
 //get number of characters from input
 //add characters to gameboard via newGame()
 //update words via getWords()
-startBtn.addEventListener("click", (e) => {
+startBtn.addEventListener("change", (e) => {
   //use number input to set characters
   let numberInput = document.getElementById("numberInput").value;
   numberInput !== ""
