@@ -129,13 +129,15 @@ function showHint() {
   let word = words[words.length - 1].split("");
   //list of all html letter elements
   let htmlLetters = [...document.getElementsByClassName("character-icon")];
-  //highlights html element if letter is in word array
-  //filters words every time to prevent duplicate letters being highlighted
-  //brute force
+
+  //highlights html element if html letter is in word array
+  //loop through html element
   htmlLetters.forEach((element) => {
     if (word.includes(element.innerText)) {
+      // if letter is found in word array highlight html element
       element.style.backgroundColor = "yellow";
-      word = word.filter((letter) => letter !== element.innerText);
+      //remove letter from word array
+      word.splice(word.indexOf(element.innerText), 1);
     }
   });
 }
