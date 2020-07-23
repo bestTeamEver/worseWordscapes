@@ -414,19 +414,14 @@ function getWordScore(word) {
 }
 
 // link this once the game ends functionality is in place ----------------------------------------
-function sendHighScore(event) {
-  // // make sure the game actually calls this function.
-  // if (event.target !== something) {
-  //   return undefined;
-  // }
-
+function sendHighScore() {
   const data = {};
 
   // set up the values in the object
   // name
   data.name = document.getElementById("player_name").innerText; // hard coded now until name is prompted at beginning --------------------------
   data.high_score = parseInt(
-    document.querySelector("#current_score").innerText
+    document.querySelector("#current_score").innerText.split(" ").pop()
   );
   let date = new Date();
   data.date = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
