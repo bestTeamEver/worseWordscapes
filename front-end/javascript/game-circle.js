@@ -1,5 +1,3 @@
-// add a listener to change the widths
-
 //function to enable clicking of buttons once
 function clickOnce(e) {
   //add letter to display
