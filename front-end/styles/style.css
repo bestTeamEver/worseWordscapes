@@ -105,3 +105,21 @@ body {
   max-height: 20vh;
   background-color: white;
 }
+
+#finePrint {
+  font-size: xx-small;
+}
+
+#tr_header,
+#gameTimer,
+#score,
+#roundContainer,
+#interaction-area {
+  font-family: "Orbitron", sans-serif;
+  font-size: xx-large;
+}
+
+#numberInput {
+  font-family: "Orbitron", sans-serif;
+  font-size: medium;
+}

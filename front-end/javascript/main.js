@@ -71,14 +71,10 @@ function newGame(numberOfChars) {
   clearInput();
   document.getElementById("clearInputBtn").style.visibility = "visible";
 
-<<<<<<< HEAD
-  //clear current timer
-=======
   //clear correct words list
   clearCorrectWordDisplay();
 
   //start game with time of one minute
->>>>>>> used-word-display
   clearInterval(globalTime);
   gameTimer(60);
 }
